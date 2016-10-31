@@ -14,8 +14,8 @@ public class LambdaLockTest {
 		ClientConfiguration cc = new ClientConfiguration();
 		cc.setProxyHost("tkyproxy.intra.tis.co.jp");
 		cc.setProxyPort(8080);
-		// System.out.println(new LambdaLock(cc).lock("foo", 10, new
-		// TestContext()));
+		// System.out.println(new LambdaLock(cc).lock("vol-02c2f91365589914a",
+		// 10000, new TestContext()));
 	}
 
 	@Test

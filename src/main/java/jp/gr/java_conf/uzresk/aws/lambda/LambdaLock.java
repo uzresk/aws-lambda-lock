@@ -39,7 +39,7 @@ public final class LambdaLock {
 	}
 
 	public boolean lock(String key, Context context) {
-		return lock(key, 6000, context);
+		return lock(key, 60000, context);
 	}
 
 	public boolean lock(String key, int expiredIntervalMillis, Context context) {
@@ -78,7 +78,7 @@ public final class LambdaLock {
 			PutItemRequest req = new PutItemRequest().withTableName(TABLE_NAME)
 					.addItemEntry(COL_FUNCTION_NAME, new AttributeValue(functionName))
 					.addItemEntry(COL_KEY, new AttributeValue(key))
-					.addItemEntry(COL_CREATED_TIME, new AttributeValue(Long.toString(currentTimeMillis)))
+					.addItemEntry(COL_CREATED_TIME, new AttributeValue().withN(Long.toString(currentTimeMillis)))
 					.addExpectedEntry(COL_FUNCTION_NAME, new ExpectedAttributeValue().withExists(false))
 					.addExpectedEntry(COL_KEY, new ExpectedAttributeValue().withExists(false));
 			client.putItem(req);
