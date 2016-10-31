@@ -39,7 +39,7 @@ public final class LambdaLock {
 	}
 
 	public boolean lock(String key, Context context) {
-		return lock(key, 60, context);
+		return lock(key, 6000, context);
 	}
 
 	public boolean lock(String key, int expiredIntervalMillis, Context context) {
@@ -103,7 +103,7 @@ public final class LambdaLock {
 			Table table = dynamoDB.getTable(TABLE_NAME);
 
 			Map<String, String> expressionAttributeNames = new HashMap<>();
-			expressionAttributeNames.put("#created_time", "created_time");
+			expressionAttributeNames.put("#created_time", COL_CREATED_TIME);
 
 			Map<String, Object> expressionAttributeValues = new HashMap<>();
 			expressionAttributeValues.put(":now", currentTimeMillis);
